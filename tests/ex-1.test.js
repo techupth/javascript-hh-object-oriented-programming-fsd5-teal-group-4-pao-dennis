@@ -28,9 +28,10 @@ describe("exercise 1: OOP tests cases", () => {
 
     const func = new Function(code);
     const { smsNotificationTest, emailNotificationTest } = func();
-    expect(console.log.mock.calls[0][0] && console.log.mock.calls[1][0]).toMatch(/Notification has been sent to/);
+    expect(
+      console.log.mock.calls[0][0] && console.log.mock.calls[1][0]
+    ).toMatch(/Notification has been sent to/);
     expect(typeof smsNotificationTest.send).toBe("function");
     expect(typeof emailNotificationTest.send).toBe("function");
-
   });
 });
