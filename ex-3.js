@@ -1,4 +1,5 @@
-//  Start coding here
+// Start coding here
+
 class User {
   constructor(id, name, email) {
     this.id = id;
@@ -9,14 +10,13 @@ class User {
 
 class PostList {
   constructor(posts) {
-    this.posts = posts;
+    this.posts = [];
   }
-
   addPost(post) {
-    this.posts = post;
+    this.posts.push(post);
   }
-  sharePost() {
-    console.log(`You've shared post “<post-title>” to your friend`);
+  sharePost(post) {
+    console.log(`You've shared post ${post.title} to your friend.`);
   }
 }
 
@@ -27,22 +27,56 @@ class Post {
     this.content = content;
     this.comment = comment;
   }
-
-  addComment() {}
+  addComment(newComment) {
+    this.comment.push(newComment);
+  }
 }
+
 class Comment {
   constructor(id, content, createdBy, like) {
     this.id = id;
     this.content = content;
     this.createdBy = createdBy;
-    this.like = like;
+    this.like = 0;
+  }
+  addLike() {
+    ++this.like;
+  }
+}
+
+class Facebook {
+  constructor(groupList, pageList) {
+    this.groupList = [];
+    this.pageList = [];
+  }
+  addGroup(groupName) {
+    this.groupList.push(groupName);
+  }
+  addPage(pageName) {
+    this.pageList.push(pageName);
+  }
+}
+class FacebookPage {
+  constructor(pageName) {
+    this.pageName = pageName;
+  }
+}
+
+class FacebookGroup {
+  constructor(groupName) {
+    this.groupName = groupName;
   }
 }
 
 class Notification {
-  constructor(notificationId, createdTime, content, receiver) {}
-
-  send() {
-    console.log("Notification has been sent to <receiver>");
+  constructor(id) {
+    this.id = id;
+  }
+  send(comment, post) {
+    console.log(
+      `${comment.createdBy} just commented on this post ${post.title}`
+    );
+    console.log(`${comment.createdBy}`);
+    console.log(`${post.title}`);
   }
 }
